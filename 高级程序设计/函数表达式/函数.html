@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+window.onload=function(){
+// 函数申明  function  函数名(){}
+// 函数表达式  function 函数名()}{}
+  function aaa(){}  //函数声明
+
+ // 函数表达式
+  var a=function aaa(){}
+ // 匿名函数表达式
+   var a=function(){}
+
+// 函数表达式
+ (function aa(){})
+
+
+
+//  函数表达式与函数声明的区别
+//  
+//  1、函数表达式可以直接
+//  在后面加括号执行，函数
+//  声明不可以
+//  
+//  2、 函数声明可以被提前
+//  解析出来
+//  
+//  
+//  3、匿名函数与命名函数
+//  
+var a=function aaa(){
+	alert(1);
+} // 可以执行，命名函数表达式
+a();
+
+
+
+(function aaaaaa(){
+
+	alert(1);
+});
+
+
+var bbb=(function(){
+    return function(){
+    	debugger;
+    }
+})()
+
+  
+
+}
+
+	</script>	
+</body>
+
+	<ul id="div1">
+		
+	</ul>
+</html>

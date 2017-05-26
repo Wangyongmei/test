@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script src="./vue.js"></script>
+<style type="text/css">
+	.bg{
+
+	}
+</style>
+<body>
+
+<div id="demo">
+<span ></span>
+</div>
+	<script>
+		let obj={
+			message:"hello Vue!"
+		}
+
+		var vm=new Vue({
+			el:'#demo',
+			data:obj,
+			render(createElement){
+				return createElement(
+
+                      'ul',
+                      {
+                      	class:{
+
+                      		bg:true
+
+                      	},
+                      	style:{
+                      		fontSize:'40px'
+                      	},
+                      	attrs:{
+                      		abc:"miaov"
+                        }
+                     }
+                      [
+                         createElement('li',1),
+                          createElement('li',2),
+                           createElement('li',3)
+                      ]
+					)
+
+			}
+		})
+		console.log(vm);
+	</script>
+</body>
+</html>

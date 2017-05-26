@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta  content="text/html" charset="utf-8">
+<style>
+  #div1 div,#div2 div ,#div3 div{
+  	  height:400px;
+  	  width:400px;
+      background:red;
+      display: none;
+  }
+  #div1 input,#div2 input,#div3 input{
+      height: 30px;
+      width:80px;
+  }
+  .active{
+      background-color:blue;
+
+  }
+
+</style>
+<script>
+ 
+ window.onload=function(){
+    var div1=document.getElementById("div1");
+    var div2=document.getElementById("div2");
+    tab(div1,true);
+    tab(div2);
+ }
+
+ // 通过函数传参的方式使两个div都可以动起来
+  
+ function tab(obj,bl){
+    var inputs=obj.getElementsByTagName("input");
+    var divs=obj.getElementsByTagName("div");
+    
+     for(var i=0; i<inputs.length; i++){
+         inputs[i].index=i; //保存下标
+         
+         inputs[i].onclick=function(){
+         
+         play(this.index);
+
+         }
+            
+     }
+
+ if(bl){
+ 	auto();
+ }
+
+ function play(index){
+ 	for(var j=0; j<inputs.length;j++){
+             inputs[j].className="";
+             divs[j].style.display="none";
+
+            }
+           
+            inputs[index].className="active";
+            divs[index].style.display="block";
+ }
+
+ function auto(){
+    var n=0;
+    setInterval(function(){
+        n++;
+       if(n > inputs.length-1){
+       	n=0;  
+       } 
+       play(n); 
+
+    },1000);
+
+ }
+
+}
+</script>
+</head>
+<body>
+<div id="div2">
+<input type="button" value="选项1" class="active">
+<input type="button" value="选项1" >
+<input type="button" value="选项1" >
+<div style="display: block;">
+  选项1 
+</div>
+<div>
+  选项2 
+</div>
+<div>
+  选项3
+</div>
+</div>
+<div id="div1">
+<input type="button" value="选项1" class="active">
+<input type="button" value="选项1" >
+<input type="button" value="选项1" >
+<div style="display:block">
+  选项1 
+</div>
+<div>
+  选项2 
+</div>
+<div>
+  选项3
+</div>
+</div>
+
+</body>
+</html>

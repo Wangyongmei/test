@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+	 //函数
+	function doAdd(num1,num2){
+		arguments[0]=10;
+		alert(arguments[0]+num2);
+	}
+
+	doAdd(20,20);
+   
+   //  没有块级作用域
+    
+    var color='pink';
+
+    function getcolor(color){
+    	 var color2='red';
+    	  console.log(window.color);
+    	return color2;
+    }
+    
+    console.log(getcolor('pink'));
+
+    //  内存管理
+    
+    function createPerson(name){
+    	var localperson=new Object();
+    	localperson.name=name;
+    	return localperson;
+
+    }
+
+    var gobal=createPerson('mi');
+    
+    console.log(gobal);
+     gobal=null;
+
+	</script>	
+   
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+ 
+	<script>
+		 //原型模式 
+    window.open('http:www.baidu.com');
+    console.log(Array.prototype);
+
+    // 原型模式与构造模式相结合使用
+    
+    function Person(name,age){
+      this.name=name;
+      this.age=age;
+      this.friend=['hj','jhj'];
+
+    }
+
+    Person.prototype={
+      constructor:Person,
+      sayName:function(){
+        alert(this.name);
+      }
+    }
+
+    var person1=new Person('wang',13);
+    var person2=new Person('lin',12);
+    person1.friend.push('77');
+    alert(person1.friend);
+    alert(person2.friend);
+
+    //寄生构造函数模式
+    function SpecialArray(){
+       var values=new Array();
+       values.push.apply(values,arguments);
+       values.toPipedString=function(){
+        return this.join('|');
+       };
+
+       return values;
+    }
+    
+    var colors=new SpecialArray('red','blue','green');
+    alert(colors.toPipedString());
+	</script>	 
+</body>
+</html>

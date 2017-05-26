@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+ 
+	<script>
+		 //原型模式 
+     
+     function Person(){
+           
+     }
+
+      Person.prototype.name="wang";
+      Person.prototype.age=13;
+      Person.prototype.sayname=function(){
+        alert(this.name);
+      }
+      // 在实例中创建该某一属性，该属性将会屏蔽原型中的属性
+      var person1=new Person();
+      person1.name='lin';
+      person1.sayname();
+
+      delete person1.name;   //  在实例中删除该属性，返回原型中的属性
+      person1.sayname();
+
+  //  hasOwnPrototype()  检测属性是否存在于实例中
+  
+
+  //  in操作符
+  //  
+    console.log(Person.prototype);
+//   Object.keys()  枚举所有实例属性  返回一个数组
+    var keys=Object.keys(Person.prototype);
+     console.log(keys);
+     var person3=new Person();
+     person3.name='yi';
+     var key1=Object.keys(person3);
+     console.log(key1);  // ['name']
+
+//  对象字面量的方法设置原型
+   Person.prototype={
+     name:'wang',
+     age:13,
+     sayname:function(){
+      alert(this.name);
+     }
+   }
+
+  //  constructor  不再指向Person  指向Object
+  console.log(Person.prototype);
+  //  如果construtor的值很重要可以重新设置该属性
+    Person.prototype={
+     constructor:Person,
+     name:'wang',
+     age:13,
+     sayname:function(){
+      alert(this.name);
+     }
+   }
+   console.log(Person.prototype); 
+   
+
+	</script>	
+</body>
+</html>

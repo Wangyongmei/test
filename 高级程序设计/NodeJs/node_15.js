@@ -1,0 +1,1 @@
+var UserBean=requrie('./module/UserBean.js')  ;

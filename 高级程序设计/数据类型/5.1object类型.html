@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+	//对象字面量 
+    function displayInfo(h,args){
+        var output='';
+
+        if(typeof args.name=='string'){
+            output+=h+'name:'+args.name+'\n';
+        }if(typeof args.age=='number'){
+            output+='age:'+args.age
+        }
+
+        alert(output);
+    }
+    
+     displayInfo('hello',{
+        name:'grace',
+        age:14
+    })
+    displayInfo('hello',{
+        name:'mike'
+    })
+
+	</script>	
+   
+</body>
+</html>

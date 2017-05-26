@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<body>
+
+<div id="demo">
+	<sapn v-on:click="clickHandle">{{message}}</sapn>
+</div>
+	<script>
+		let obj={
+			message:"hello Vue!"
+		}
+
+		var vm=new Vue({
+			el:'#demo',
+			data:obj,
+			methods:{
+				clickHandle(){
+					alert('click')
+				}
+			}
+		})
+		console.log(vm);
+	</script>
+</body>
+</html>

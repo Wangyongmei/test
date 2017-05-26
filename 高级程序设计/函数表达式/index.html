@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+        
+       function test(){  
+    var prop = 1;  
+   f = function(){  
+        return prop++;  
+    }  
+   alert(prop);  
+      
+}  
+var t = test();  
+
+t.f()();
+
+		var name='the window';
+
+		var object={
+			name:'the function',
+			getNameFunc:function(){
+				return function(){
+					alert(this.name);
+				}
+			}
+		}
+     
+
+       object.getNameFunc()(); // the window   匿名函数this指向全局
+
+       (function(o) { 
+			alert(o); 
+			return arguments.callee; 
+		})('water')('down');          // 匿名函数
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>弹窗组件</title>
+	<link rel="stylesheet" href="">
+	<style>
+	  *{
+      margin:0;
+      padding:0;
+    }
+    input{
+      width:50px;
+    }
+    .login{
+     
+      border:1px solid #000;
+      position: absolute;
+      left:0;
+      top:0;
+      z-index:2;
+      background: #fff;
+
+    }
+
+    #title{
+       height: 30px;
+       background: gray;
+       color:#fff;
+    }
+
+    #title .close{
+      float: right;
+    }
+
+    #mark{
+      position: absolute;
+      height: 500px;
+      width:500px;
+      z-index: 1;
+      left:0;
+      top:0;
+      background: #000;
+      opacity: 0.6;
+    }
+
+	</style>
+</head>
+
+	<script>
+//组件：多组对象，像兄弟之间的关系（代码复用的一种形式）		
+
+window.onload=function(){
+    var aInput=document.getElementsByTagName('input');
+    aInput[0].onclick=function(){
+ 
+       var put1=new Dialog();
+        put1.init({
+         iNow:0,
+         w:400,
+         h:300,
+         dir:'right',
+         mark:true
+        })
+
+    
+   }
+      
+      aInput[1].onclick=function(){
+       var put1=new Dialog();
+       put1.init({
+        iNow:1,
+         w:200,
+         h:300
+
+       })
+
+
+    }
+
+
+
+      aInput[2].onclick=function(){
+       var put2=new Dialog();
+       put2.init({
+        iNow:2,
+         w:300,
+         h:300,
+         dir:'center',
+         mark:true
+       })
+
+
+    }
+}
+function Dialog(){
+    this.oLogin=null;
+    this.setting={
+      w:300,
+      h:300,
+      dir:'center',
+      title:'登录',
+      mark:false
+    }
+}
+
+Dialog.prototype.json={
+
+};
+
+Dialog.prototype.init=function(opt){
+   extend(this.setting,opt);
+   
+
+   if(this.json[opt.iNow]==undefined){
+         
+      
+        this.json[opt.iNow]=true;
+   }
+
+     if(this.json[opt.iNow]){
+        this.create();
+        this.fnClose();
+       if(this.setting.mark){
+         this.createMark();
+       }
+
+       this.json[opt.iNow]=false;
+    }
+
+  
+}
+
+Dialog.prototype.create=function(){
+  this.oLogin=document.createElement('div');
+  this.oLogin.className='login';
+  this.oLogin.innerHTML='<div id="title">'
+      +'<span>标题</span><span class="close">X</span>'
+     +'</div>'
+     +'<div id="content">'
+      +'内容'
+     +'</div>';
+  document.body.appendChild(this.oLogin);
+  this.setData();
+}
+
+Dialog.prototype.setData=function(){
+    this.oLogin.style.width=this.setting.w+'px';
+    this.oLogin.style.height=this.setting.h+'px';
+    if(this.setting.dir=='center'){
+         this.oLogin.style.left=(viewWidth()-this.oLogin.offsetWidth)/2+'px';
+         this.oLogin.style.top=(viewHeight()-this.oLogin.offsetHeight)/2+'px';
+         console.log( this.oLogin.style.top);
+    }
+    else if(this.setting.dir=='right'){
+
+       this.oLogin.style.left=(viewWidth()-this.oLogin.offsetWidth)+'px';
+    }
+
+}
+
+Dialog.prototype.fnClose=function(){
+  var oClose=this.oLogin.getElementsByTagName('span')[1];
+  var _this=this;
+  oClose.onclick=function(){
+    
+    document.body.removeChild(_this.oLogin);
+     if(_this.setting.mark){
+       document.body.removeChild(_this.mark);
+     }
+
+     _this.json[_this.setting.iNow]==true;
+  }
+}
+
+Dialog.prototype.createMark=function(){
+    var  oMark=document.createElement('div');
+    oMark.id='mark';
+    this.mark=oMark;
+    this.mark.innerHTML='<div id="mark"></div>';
+    document.body.appendChild(this.mark);
+    this.mark.style.width=viewWidth()+'px';
+    this.mark.style.height=viewHeight()+'px';
+
+}
+
+Dialog.prototype.drag(){
+  
+}
+
+function extend(obj1,obj2){
+   for(var attr in obj2){
+      obj1[attr]=obj2[attr];
+   }
+}
+
+
+function viewWidth(){
+  
+  return document.documentElement.clientWidth;
+}
+function viewHeight(){
+  return document.documentElement.clientHeight;
+}
+
+
+
+
+
+
+
+
+</script>
+
+<body>
+<input type='button' value='1'>
+<input type='button' value='2'>
+<input type='button' value='3'>
+
+  
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+
+	<script>
+		window.onload=function(){
+			var parentNode=document.getElementById('parent');
+			var node=document.createElement('div');
+			node.className='newNode';
+			// var newNode=parentNode.appendChild(parentNode.firstChild);
+			// console.log(parentNode.firstChild);
+			// console.log(newNode==parentNode.firstChild);
+			// console.log(newNode==parentNode.lastChild);
+
+			var returnNode=parentNode.insertBefore(node,parentNode.lastElementChild);
+			console.log(parentNode);
+			console.log(parentNode.childNodes);
+
+			var oUl=document.getElementById('ul');
+			var deeplist=oUl.cloneNode(true);
+			console.log(deeplist);
+
+			var shallist=oUl.cloneNode(false);
+			console.log(shallist);
+
+			//oUl.normalize();
+			console.log(oUl.childNodes);
+
+			console.log(document);
+
+
+  var element=document.getElementById('colorRed');
+  function outputAttributes(element){
+  	var pairs=new Array(),
+  	    attrName,
+  	    attrValue,
+  	    i,
+  	    len=element.attributes.length;
+
+  	  for(var i=0;i<len;i++){
+  	  	attrName=element.attributes[i].nodeName;
+  	  	attrValue=element.attributes[i].nodeValue;
+        pairs.push(attrName+"=\""+attrValue+"\"");
+  	  }
+
+  	  return pairs.join(" ");
+  }
+  
+  console.log(element.attributes);
+  console.log(outputAttributes(element));
+
+
+  var element2=document.createElement('div');
+  element2.className='element2';
+  var textNode=document.createTextNode("hello World");
+  element2.appendChild(textNode);
+
+  var anthoeNode=document.createTextNode('yippee');
+  element2.appendChild(anthoeNode);
+
+  document.body.appendChild(element2);
+
+
+
+  var table=document.createElement('table');
+  table.border=1;
+  table.width="50%";
+
+  var tbody=document.createElement('tbody');
+  table.appendChild(tbody);
+
+  tbody.insertRow(0);
+  tbody.rows[0].insertCell(0);
+  tbody.rows[0].cells[0].appendChild(document.createTextNode('cell 1.1'));
+  tbody.rows[0].insertCell(1);
+  tbody.rows[0].cells[1].appendChild(document.createTextNode('cell 1.2'));
+
+  tbody.insertRow(1);
+  tbody.rows[1].insertCell(0);
+  tbody.rows[1].cells[0].appendChild(document.createTextNode('cell 2.1'));
+  tbody.rows[1].insertCell(1);
+  tbody.rows[1].cells[1].appendChild(document.createTextNode('cell 2.2'));
+
+
+  document.body.appendChild(table);
+
+
+  var i,
+      len,
+      child=table.firstElementChild;
+      
+      while(child!=table.lastElementChild){
+      	console.log(child);
+      	child=child.nextElementSibling;
+      }
+
+
+
+
+  var className=parentNode.className.split(/\s+/);
+
+   var newClassNames=dom.removeClassName(className,"user");
+
+   parentNode.className=newClassNames.join(" ");
+
+  // 自定义属性
+  
+   var div=document.getElementById('myDiv');
+   console.log(div.dataset.appid);
+
+
+}
+			 
+	</script>
+<body>
+<div id="myDiv" data-appid="123" data-myname="xxxx"></div>
+	<div id="parent" class="cl user div">
+		<p class="firstChild"></p>
+		<div></div>
+		<div></div>
+	</div>
+
+	<ul id="ul">
+		<li></li>
+		<li></li>
+	</ul>
+
+	<fieldset>
+		<legend>title or explanatory caption</legend>
+		<ul>
+			<li>
+				<input type='radio' value="red" name="color" id="colorRed">
+				<label for="colorRed">Red</label>
+			</li>
+			<li>
+				<input type='radio' value="green" name="color" id="colorGreen">
+				<label for="colorGreen">Green</label>
+			</li>
+			<li>
+				<input type='radio' value="blue" name="color" id="colorRed">
+				<label for="colorBlue">Blue</label>
+			</li>
+		</ul>
+	</fieldset>
+
+
+	<table border="1" width="100%">
+		<tbody>
+			<tr>
+				<td>cel 1.1</td>
+				<td>cel 1.2</td>
+			</tr>
+			<tr>
+				<td>cel 2.1</td>
+				<td>cel 2.2</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script src="DOM封装一些方法.js"></script>
+</body>
+</html>

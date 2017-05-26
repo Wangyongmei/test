@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+	<script>
+
+		// var color="red";
+		// function change(){
+		// 	var anothercolor="pink";
+  //           function swapcolor(){
+  //           	var temcolor="blue";
+  //           	anthercolor=color;
+  //           	color=temcolor;
+
+  //           	alert(color);
+  //           }
+
+          
+           
+		// }
+        
+  //       alert(color);
+		// change();
+ 	// 	swapcolor();
+ 	// 	
+ 	
+ 	// var person={};
+ 	// person.name="li";
+
+ 	// var person1=person;
+
+ 	// person1.name="wang";
+
+ 	// var tyname="name";  // 使用变量访问属性
+ 	// alert(person['name']);
+ 	// alert(person[tyname]);
+   
+
+//-----------------------------------------------------
+    //  forEach,every,some
+
+    var arr1 = [1,2,3,4,5,6];
+    function double(x){
+      return 2*x;
+    }
+    // map可以产生一个新的数组
+    // alert(arr1.map(double));
+    function print(x){
+      console.log(x*2)
+    }
+    arr1.forEach(print);
+
+    function even(x){
+      return x %2 ==0
+    }
+    var arr2 = [2,4,,5,6];
+      
+      //alert(arr2.every(even))//false; 执行even方法 如果数组中的每一项都返回的ture  则返回ture。
+      //alert(arr2.some(even))//true;   执行even方法，如果有一个返回为true  则返回true
+
+    function add(a,b){
+    return a*b;
+    }
+    var arr3=[1,2,4,5];
+    var factorial = arr3.reduce(add);
+    //alert(factorial) //40
+ 
+  // 
+    var arr4=[1,24,5,6,7,8,234,4];
+    alert(arr4.filter(even))
+  
+ 
+   // map,filter可以产生一个新的数组
+    var arr1 = [1,2,3,4,5,6];
+    function double(x){
+      return 2*x;
+    }
+   //alert(arr1.map(double));
+   //forEach是对数组每项都调用某个函数，不返回
+    function print(x){
+      console.log(x*2)
+    }
+    arr1.forEach(print);
+   //some,every 参数是一个有返回布尔值的函数
+    function even(x){
+      return x %2 ==0
+    }
+    var arr2 = [2,4,,5,6];
+    // alert(arr2.every(even))//false;
+    // alert(arr2.some(even))//true;
+    //reduce接受一个函数，返回一个值 ，不断累加到最后一项
+    //同理，reduceRight是由后面累加到第一项，具体可从CONCAT 看出
+    function add(a,b){
+    return a*b;
+    }
+    var arr3=[1,2,4,5];
+    var factorial = arr3.reduce(add);
+    //alert(factorial) //40
+    //filter与every类似，参入一个返回布尔值 的函数,返回一个新的数组
+
+
+	</script>
+</html>
+

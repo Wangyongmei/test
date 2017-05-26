@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<script type='text/javascript'>
+
+
+function aaaa(){
+	return bbb();
+}
+
+function bbb(){
+	debugger;
+}
+
+
+
+var aaa=function (){
+	var a=2;
+	return function(){
+		a++;
+		alert(a);
+	}
+}();
+
+
+var name='hhh';
+var object={
+	name:'jjj',
+	fun:function(){
+		var that=this;
+		return function(){
+			return that.name;
+		}
+	}
+};
+
+console.log(object.fun()());
+
+
+(function(){
+	var name='';
+
+	Person=function(value){
+       name=value;
+	};
+
+	Person.prototype.getName=function(){
+		return name;
+	}
+	Person.prototype.setName=function(value){
+        name=value;
+ 	}
+})();
+
+var p1=new Person('wang');
+var p2=new Person('yi');
+console.log(p1.getName());
+p1.setName('li')
+console.log(p1.getName());
+
+
+console.log(p2.getName());
+console.log(p1.getName());
+
+
+
+console.log(window);
+
+</script>
+
+
+<body>
+	
+
+
+
+</body>
+</html>

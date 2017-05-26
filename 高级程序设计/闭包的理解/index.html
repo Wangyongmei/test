@@ -1,0 +1,75 @@
+  <!DOCTYPE HTML>
+  <html>
+ <head>
+  <meta charset="utf-8" />
+  <title>闭包演示</title>
+  <style type="text/css">
+     p {background:gold;}
+  </style>
+<script type="text/javascript">
+
+ Object.prototype.x = 10;
+ 
+var w = 20;
+var y = 30;
+ 
+// 在SpiderMonkey全局对象里
+// 例如，全局上下文的变量对象是从"Object.prototype"继承到的
+// 所以我们可以得到“没有声明的全局变量”
+// 因为可以从原型链中获取
+ 
+console.log(x); // 10
+ 
+(function foo() {
+ 
+  // "foo" 是局部变量
+  var w = 40;
+  var x = 100;
+ 
+  // "x" 可以从"Object.prototype"得到，注意值是10哦
+  // 因为{z: 50}是从它那里继承的
+ 
+  with ({z: 50}) {
+    console.log(w, x, y , z); // 40, 10, 30, 50
+  }
+ 
+  // 在"with"对象从作用域链删除之后
+  // x又可以从foo的上下文中得到了，注意这次值又回到了100哦
+  // "w" 也是局部变量
+  console.log(x, w); // 100, 40
+ 
+  // 在浏览器里
+  // 我们可以通过如下语句来得到全局的w值
+  console.log(window.w); // 20
+ 
+})();
+
+
+function init() {
+    var pAry = document.getElementsByTagName("p");
+    for( var i=0; i<pAry.length; i++ ) {
+    	
+         // (pAry[i].onclick =function() {
+         //     alert(arguments.callee.i);   //  callee 指向拥有arguments对象的函数。
+         
+         // }).i=i;
+         // 
+         
+
+         (function(arg){
+         	pAry[i].onclick=function(){
+               alert(arg);
+         	}
+         })(i)
+  }
+}
+</script>
+</head>
+<body onload="init();">
+<p>产品 0</p>
+<p>产品 1</p>
+<p>产品 2</p>
+<p>产品 3</p>
+<p>产品 4</p>
+</body>
+</html>

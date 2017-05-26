@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+	<script>
+		function isHostMethod(object,property){
+			var t=typeof object[property];
+			return t=='function'||(!!(t=='object'&&object[property]))||t=='unknown';
+
+		}
+       
+  //      var xhr=new ActiveXObject('Microsoft.XMLHttp');  //IE中
+		// var reslut=isHostMethod(xhr,"open");
+		// var reslut1=isHostMethod(xhr,"foo");
+		// console.log(reslut);
+		// console.log(reslut1);
+
+
+		var hasDontEnumQuirk=function(){
+			var o={
+				toString:function(){
+
+				}
+			}
+
+			for(prop in o){
+				console.log(prop);
+			}
+
+			console.log(o);
+		}();
+
+
+   console.log(navigator.userAgent);
+
+
+   var client=function(){
+   	  var engin={
+   	  	ie:0,
+   	  	gecko:0,
+   	  	webkit:0,
+   	  	khtml:0,
+   	  	opera:0,
+   	  	ver:null
+   	  };
+   	  return {
+   	  	engine:engin
+   	  };
+   }()
+
+   console.log(client);
+
+
+   function indexOf(arr, item) {
+   var len=arr.length;
+    for(var i=0;i<len;i++){
+        if(arr[i]==item){
+            return arr[i];
+            break;
+        }
+    }
+    
+}
+
+indexOf([ 1, 2, 3, 4 ], 3);
+
+function count(arr, item) {
+   var result=arr.filter(function(a){
+       return (a>item);
+       
+   });
+    
+    return result.length;
+}
+alert(count([1, 2, 4, 4, 3, 4, 3], 4));
+
+	</script>
+<body style="background: #f0f0f0">
+	
+
+</body>
+</html>

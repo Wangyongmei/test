@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+
+	<script>
+		// 递归函数是在一个函数通过名字调用自身的情况下构成的；
+		
+
+		function factorial(num){
+			if(num<=1){
+				return 1;
+			}else{
+
+				return num*arguments.callee(num-1);
+			}
+
+		}
+
+		var anotherFactorial=factorial;
+		factorial=null;
+		//console.log(factorial(3));
+		console.log(anotherFactorial(3));
+
+		// 使用命名函数 
+	
+
+	   var factorial1=(function f(num){
+	   	    if(num<=1){
+				return 1;
+			}else{
+
+				return num*f(num-1);
+			}
+	   })
+           
+
+       var anotherFactorial1=factorial1;
+		//factorial1=null;
+		console.log(anotherFactorial1.prototype);
+		console.log(factorial1(3));
+		console.log(anotherFactorial1(3));
+
+
+
+
+
+	</script>	
+</body>
+</html>

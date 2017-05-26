@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+ 
+	<script>
+	 // 借用构造函数实现继承
+   function foo(){
+     this.color=['red','yellow','green'];
+   }
+
+   function foo1(){
+     foo.call(this);
+   }
+
+   var instance=new foo1();
+   var instance2=new foo1();
+
+   instance.color.push('pink');
+   console.log(instance.color); // ["red", "yellow", "green", "pink"]
+   console.log(instance2.color);  //["red", "yellow", "green"]
+    //  在实例化之前就在foo1中调用了foo函数，每一个实例化对象中都保存了一个color属性的副本
+  
+
+  //  组合继承
+  //  
+  function SuperType(name){
+    this.name=name;
+    this.color=["red", "yellow", "green", "pink"];
+
+  }  
+
+  SuperType.prototype.sayName=function(){
+    alert(this.name);
+  }
+  
+  function SubType(name,age){
+    SuperType.call(this,name);
+    this.age=age;
+  }
+   
+   SubType.prototype=new SuperType();
+   SubType.prototype.constructor=SubType;
+   SubType.prototype.sayage=function(){
+    alert(this.age);
+   }
+
+   var instance=new SubType('wang',13);
+    console.log();
+    instance.sayName();
+   instance.sayage();
+   
+  
+  
+
+	</script>	 
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+		
+		   var book={
+      	_year:2004,
+      	edtion:1
+      }
+
+      Object.defineProperty(book,'year',{
+
+      	get:function(){
+      		return this._year;
+      	},
+      	set:function(newvalue){
+      		if(newvalue>2004){
+      			this._year=newvalue;
+      			this.edtion=newvalue-2004;
+
+      		}
+
+      	}
+
+      })
+
+     book.year=2006;
+     alert(book.edtion);
+
+  //  工厂模式
+     function createobj(name,age){
+
+     	var obj=new Object();
+         obj.name=name;
+         obj.age=age;
+         obj.sayname=function(){
+              alert(this.name);
+         }
+        return obj;
+     }
+
+
+
+   //  构造函数模式
+   //  
+    function Person(name,age){
+    	this.name=name;
+    	this.age=age;
+    	this.sayname=function(){
+    		alert(this.name);
+    	}
+    }
+
+    var person=new Person("wangy",13);
+    person.sayname();
+    console.log(person.name);
+
+    
+	</script>	
+</body>
+</html>
